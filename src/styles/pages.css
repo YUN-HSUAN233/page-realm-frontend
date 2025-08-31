@@ -1,0 +1,351 @@
+/* 驗證頁面樣式 */
+.verification-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.verification-content {
+  width: 100%;
+  max-width: 450px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 32px;
+}
+
+.verification-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.verification-header h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #4b2e2a;
+  margin-bottom: 8px;
+}
+
+.verification-header p {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.email-display {
+  color: #4b2e2a;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #f3f4f6;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 12px;
+}
+
+.verification-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.verification-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.verify-button {
+  background-color: #4b2e2a;
+  color: white;
+}
+
+.verify-button:hover {
+  background-color: #3d2521;
+}
+
+.resend-button {
+  background-color: transparent;
+  color: #4b2e2a;
+  border: 1px solid #4b2e2a;
+}
+
+.resend-button:hover {
+  background-color: #4b2e2a;
+  color: white;
+}
+
+/* 註冊方式選擇頁面樣式 */
+.register-method-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.register-method-content {
+  width: 100%;
+  max-width: 500px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 32px;
+}
+
+.register-method-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.register-method-header h2 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #4b2e2a;
+  margin-bottom: 8px;
+}
+
+.register-method-header p {
+  color: #6b7280;
+  font-size: 16px;
+}
+
+.register-method-options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.register-method-button {
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.register-method-button.email {
+  background-color: #4b2e2a;
+  color: white;
+}
+
+.register-method-button.email:hover {
+  background-color: #3d2521;
+}
+
+.register-method-button.google {
+  background-color: #ffffff;
+  color: #4b2e2a;
+  border: 2px solid #4b2e2a;
+}
+
+.register-method-button.google:hover {
+  background-color: #4b2e2a;
+  color: white;
+}
+
+.register-method-button.facebook {
+  background-color: #1877f2;
+  color: white;
+}
+
+.register-method-button.facebook:hover {
+  background-color: #166fe5;
+}
+
+.register-method-button.github {
+  background-color: #24292e;
+  color: white;
+}
+
+.register-method-button.github:hover {
+  background-color: #1b1f23;
+}
+
+.register-method-footer {
+  text-align: center;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.register-method-footer p {
+  color: #6b7280;
+  margin-bottom: 16px;
+}
+
+.login-link-button {
+  background-color: transparent;
+  color: #4b2e2a;
+  border: 1px solid #4b2e2a;
+  padding: 12px 24px;
+  border-radius: 6px;
+}
+
+.login-link-button:hover {
+  background-color: #4b2e2a;
+  color: white;
+}
+
+/* 用戶主頁樣式 */
+.user-main-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.user-main-content {
+  width: 100%;
+  max-width: 800px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 32px;
+}
+
+.user-welcome {
+  text-align: center;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.user-welcome h2 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #4b2e2a;
+  margin-bottom: 8px;
+}
+
+.user-welcome p {
+  color: #6b7280;
+  font-size: 16px;
+}
+
+.user-actions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.logout-button {
+  background-color: #ab3b3a;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+}
+
+.logout-button:hover {
+  background-color: #8b2f2e;
+}
+
+.user-info {
+  background-color: #f9fafb;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.user-info h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #4b2e2a;
+  margin-bottom: 16px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #4b2e2a;
+}
+
+.info-value {
+  color: #6b7280;
+}
+
+.quick-actions {
+  background-color: #f9fafb;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.quick-actions h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #4b2e2a;
+  margin-bottom: 16px;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.action-button {
+  background-color: #4b2e2a;
+  color: white;
+  padding: 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.action-button:hover {
+  background-color: #3d2521;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 載入狀態樣式 */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.loading-spinner {
+  color: #4b2e2a;
+  font-size: 16px;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .verification-content,
+  .register-method-content,
+  .user-main-content {
+    margin: 16px;
+    padding: 24px;
+  }
+  
+  .register-method-header h2,
+  .user-welcome h2 {
+    font-size: 24px;
+  }
+  
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .action-grid {
+    grid-template-columns: 1fr;
+  }
+}
