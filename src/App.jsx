@@ -14,6 +14,7 @@ import UsernameSettings from './pages/UserSettings/UsernameSettings';
 import AvatarSettings from './pages/UserSettings/AvatarSettings';
 import TotpSettings from './pages/Totp/TotpSettings';
 import OAuth2RedirectHandler from './pages/OAuth2RedirectHandler';
+import SupportTicketPage from './pages/SupportTicketPage';
 import SupportMessagePage from './pages/SupportMessagePage';
 
 function App() {
@@ -39,6 +40,14 @@ function App() {
             />
             <Route 
               path="/support" 
+              element={
+                <ProtectedRoute>
+                  <SupportTicketPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route 
+              path="/support/new" 
               element={
                 <ProtectedRoute>
                   <SupportMessagePage />

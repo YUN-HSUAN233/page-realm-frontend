@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
 import imgPageRealmLogo0111 from "../assets/logos/PageRealm_LOGO_01_1.png";
+import { useForm } from 'react-hook-form';
 
 function Logo() {
   return (
@@ -353,7 +354,7 @@ function AgreeBtnSection({ onClick, loading }) {
   );
 }
 
-function EmailInfoSection({ formData, onInputChange }) {
+function EmailInfoSection({ formData, onInputChange, errors }) {
   return (
     <div className="relative shrink-0 w-full">
       <div className="overflow-clip relative size-full">
@@ -363,28 +364,40 @@ function EmailInfoSection({ formData, onInputChange }) {
             value={formData.username} 
             onChange={(e) => onInputChange('username', e.target.value)} 
           />
+          {errors?.username && (
+            <p className="text-red-600 text-[17px] mt-1">{errors.username.message}</p>
+          )}
           <EmailInfoText />
           <EmailInfoInput 
             value={formData.email} 
             onChange={(e) => onInputChange('email', e.target.value)} 
           />
+          {errors?.email && (
+            <p className="text-red-600 text-[17px] mt-1">{errors.email.message}</p>
+          )}
           <PasswordInfoText />
           <PasswordInput 
             value={formData.password} 
             onChange={(e) => onInputChange('password', e.target.value)} 
           />
+          {errors?.password && (
+            <p className="text-red-600 text-[17px] mt-1">{errors.password.message}</p>
+          )}
           <ConfirmPasswordInfoText />
           <ConfirmPasswordInput 
             value={formData.confirmPassword} 
             onChange={(e) => onInputChange('confirmPassword', e.target.value)} 
           />
+          {errors?.confirmPassword && (
+            <p className="text-red-600 text-[17px] mt-1">{errors.confirmPassword.message}</p>
+          )}
         </div>
       </div>
     </div>
   );
 }
 
-function GenderInfoSection({ formData, onInputChange }) {
+function GenderInfoSection({ formData, onInputChange, errors }) {
   return (
     <div className="relative shrink-0 w-full">
       <div className="overflow-clip relative size-full">
@@ -394,13 +407,16 @@ function GenderInfoSection({ formData, onInputChange }) {
             value={formData.gender} 
             onChange={(e) => onInputChange('gender', e.target.value)} 
           />
+          {errors?.gender && (
+            <p className="text-red-600 text-[17px] mt-1">{errors.gender.message}</p>
+          )}
         </div>
       </div>
     </div>
   );
 }
 
-function BirthDateInfoSection({ formData, onInputChange }) {
+function BirthDateInfoSection({ formData, onInputChange, errors }) {
   return (
     <div className="relative shrink-0 w-full">
       <div className="overflow-clip relative size-full">
@@ -410,20 +426,23 @@ function BirthDateInfoSection({ formData, onInputChange }) {
             value={formData.birthdate} 
             onChange={(e) => onInputChange('birthdate', e.target.value)} 
           />
+          {errors?.birthdate && (
+            <p className="text-red-600 text-[17px] mt-1">{errors.birthdate.message}</p>
+          )}
         </div>
       </div>
     </div>
   );
 }
 
-function RigisterByEmailForm({ formData, onInputChange, onSubmit, loading }) {
+function RigisterByEmailForm({ formData, onInputChange, onSubmit, loading, errors }) {
   return (
     <div className="bg-[#ffffff] relative rounded-md shrink-0">
       <div className="box-border content-stretch flex flex-col gap-2.5 items-center justify-start overflow-clip pb-[30px] pt-2.5 px-2.5 relative">
         <RbefTitle />
-        <EmailInfoSection formData={formData} onInputChange={onInputChange} />
-        <GenderInfoSection formData={formData} onInputChange={onInputChange} />
-        <BirthDateInfoSection formData={formData} onInputChange={onInputChange} />
+        <EmailInfoSection formData={formData} onInputChange={onInputChange} errors={errors} />
+        <GenderInfoSection formData={formData} onInputChange={onInputChange} errors={errors} />
+        <BirthDateInfoSection formData={formData} onInputChange={onInputChange} errors={errors} />
         <TermsOfService />
         <AgreeBtnSection onClick={onSubmit} loading={loading} />
       </div>
@@ -432,7 +451,7 @@ function RigisterByEmailForm({ formData, onInputChange, onSubmit, loading }) {
   );
 }
 
-function RbeSection({ formData, onInputChange, onSubmit, loading }) {
+function RbeSection({ formData, onInputChange, onSubmit, loading, errors }) {
   return (
     <div className="relative shrink-0 w-full">
       <div className="flex flex-row justify-center overflow-clip relative size-full">
@@ -441,7 +460,8 @@ function RbeSection({ formData, onInputChange, onSubmit, loading }) {
             formData={formData} 
             onInputChange={onInputChange} 
             onSubmit={onSubmit} 
-            loading={loading} 
+            loading={loading}
+            errors={errors}
           />
         </div>
       </div>
@@ -449,7 +469,7 @@ function RbeSection({ formData, onInputChange, onSubmit, loading }) {
   );
 }
 
-function RigisterByEmailPage({ formData, onInputChange, onSubmit, loading }) {
+function RigisterByEmailPage({ formData, onInputChange, onSubmit, loading, errors }) {
   return (
     <div className="bg-[#fffdfb] relative rounded shrink-0">
       <div className="box-border content-stretch flex flex-col gap-2.5 items-center justify-center overflow-clip pb-10 pt-[25px] px-0 relative">
@@ -458,7 +478,8 @@ function RigisterByEmailPage({ formData, onInputChange, onSubmit, loading }) {
           formData={formData} 
           onInputChange={onInputChange} 
           onSubmit={onSubmit} 
-          loading={loading} 
+          loading={loading}
+          errors={errors}
         />
       </div>
       <div aria-hidden="true" className="absolute border border-[#4b2e2a] border-solid inset-0 pointer-events-none rounded shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]" />
@@ -467,71 +488,71 @@ function RigisterByEmailPage({ formData, onInputChange, onSubmit, loading }) {
 }
 
 const RegisterEmailPageContainer = () => {
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    gender: '',
-    birthdate: ''
-  });
   const [loading, setLoading] = useState(false);
-  const { register } = useAuth();
+  const { register: doRegister } = useAuth();
   const navigate = useNavigate();
 
+  const {
+    register: rhfRegister,
+    handleSubmit: rhfHandleSubmit,
+    setValue,
+    watch,
+    getValues,
+    formState: { errors, isSubmitting }
+  } = useForm({ mode: 'onChange' });
+
+  useEffect(() => {
+    rhfRegister('username', {
+      required: '請輸入用戶名',
+      minLength: { value: 3, message: '用戶名至少 3 個字符' },
+      maxLength: { value: 20, message: '用戶名最多 20 個字符' }
+    });
+    rhfRegister('email', {
+      required: '請輸入 Email',
+      pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Email 格式不正確' }
+    });
+    rhfRegister('password', {
+      required: '請輸入密碼',
+      minLength: { value: 6, message: '密碼至少 6 個字符' },
+      maxLength: { value: 40, message: '密碼最多 40 個字符' }
+    });
+    rhfRegister('confirmPassword', {
+      required: '請再次輸入密碼',
+      validate: (v) => v === getValues('password') || '密碼確認不一致'
+    });
+    rhfRegister('gender', { required: '請選擇性別' });
+    rhfRegister('birthdate', { required: '請選擇生日' });
+  }, [rhfRegister, getValues]);
+
   const handleInputChange = (field, value) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }));
+    setValue(field, value, { shouldValidate: true, shouldDirty: true, shouldTouch: true });
   };
 
-  const validateForm = () => {
-    if (!formData.username.trim()) {
-      toast.error('請輸入用戶名');
-      return false;
-    }
-    if (!formData.email.trim()) {
-      toast.error('請輸入 Email');
-      return false;
-    }
-    if (!formData.password) {
-      toast.error('請輸入密碼');
-      return false;
-    }
-    if (formData.password !== formData.confirmPassword) {
-      toast.error('密碼確認不一致');
-      return false;
-    }
-    if (!formData.gender) {
-      toast.error('請選擇性別');
-      return false;
-    }
-    if (!formData.birthdate) {
-      toast.error('請選擇生日');
-      return false;
-    }
-    return true;
+  const formData = {
+    username: watch('username') || '',
+    email: watch('email') || '',
+    password: watch('password') || '',
+    confirmPassword: watch('confirmPassword') || '',
+    gender: watch('gender') || '',
+    birthdate: watch('birthdate') || ''
   };
 
-  const handleSubmit = async () => {
-    if (!validateForm()) return;
-
+  const onSubmit = async (data) => {
     setLoading(true);
     try {
       const submitData = {
-        username: formData.username,
-        email: formData.email,
-        password: formData.password,
-        gender: formData.gender,
-        birthdate: formData.birthdate,
+        username: data.username,
+        email: data.email,
+        password: data.password,
+        gender: data.gender,
+        birthdate: data.birthdate,
         role: ['user']
       };
 
-      const result = await register(submitData);
+      const result = await doRegister(submitData);
       if (result.success) {
         toast.success('註冊成功！請檢查您的 Email 進行驗證。');
-        navigate(`/email-verification?email=${encodeURIComponent(formData.email)}`);
+        navigate(`/email-verification?email=${encodeURIComponent(data.email)}`);
       } else {
         toast.error(result.error);
       }
@@ -548,8 +569,9 @@ const RegisterEmailPageContainer = () => {
       <RigisterByEmailPage 
         formData={formData} 
         onInputChange={handleInputChange} 
-        onSubmit={handleSubmit} 
-        loading={loading} 
+        onSubmit={rhfHandleSubmit(onSubmit)} 
+        loading={loading || isSubmitting} 
+        errors={errors}
       />
     </div>
   );
