@@ -122,4 +122,71 @@ export const supportAPI = {
   getAllTicketDetails: () => api.get('/support/tickets/details')
 };
 
+// 願望清單相關 API
+export const wishlistAPI = {
+  // 查看願望清單
+  getWishlist: () => api.get('/wish/view'),
+  // 從願望清單移除商品（批量操作）
+  removeFromWishlist: (itemIds) => api.delete('/wish/remove', { data: { ids: Array.isArray(itemIds) ? itemIds : [itemIds] } }),
+  // 將願望清單商品加入購物車（批量操作）
+  moveToCart: (itemIds) => api.post('/wish/toCart', { ids: Array.isArray(itemIds) ? itemIds : [itemIds] })
+};
+
+// 購物車相關 API
+export const cartAPI = {
+  // 查看購物車
+  getCart: () => api.get('/cart/view'),
+  // 從購物車移除商品（批量操作）
+  removeFromCart: (itemIds) => api.delete('/cart/remove', { data: { ids: Array.isArray(itemIds) ? itemIds : [itemIds] } }),
+  // 將購物車商品加入願望清單（批量操作）
+  moveToWishlist: (itemIds) => api.post('/cart/toWish', { ids: Array.isArray(itemIds) ? itemIds : [itemIds] })
+};
+
+// 結帳相關 API
+export const checkoutAPI = {
+  // 獲取購物車摘要（小計、回饋點數等）
+  getCartSummary: () => api.get('/checkout/summary'),
+  // 獲取會員等級信息
+  getMembershipTier: () => api.get('/checkout/membershipTier'),
+  // 獲取可用點數信息
+  getPointsInfo: () => api.get('/checkout/pointsInfo'),
+  // 獲取可用優惠券信息
+  getCouponInfo: () => api.get('/checkout/couponInfo'),
+  // 應用點數折抵
+  applyPoints: (pointsToApply) => api.post('/checkout/applyPoints', { pointsToApply }),
+  // 應用優惠券
+  applyCoupon: (couponCode) => api.post('/checkout/applyCoupon', { couponCode }),
+  // 創建訂單並獲取綠界支付頁面
+  createOrder: () => api.post('/checkout/createOrder', {}, { 
+    responseType: 'text',
+    headers: {
+      'Accept': 'text/html'
+    }
+  })
+};
+
+// 訂單相關 API
+export const ordersAPI = {
+  // 查看訂單清單
+  getOrders: (page = 0, size = 5) => api.get('/order/view', { params: { page, size } }),
+};
+
+// 點數相關 API
+export const pointsAPI = {
+  // 獲取目前可用點數信息
+  getPointsInfo: () => api.get('/checkout/pointsInfo'),
+  // 獲取點數紀錄
+  getPointsHistory: () => api.get('/points/view'),
+};
+
+// 優惠券相關 API
+export const couponAPI = {
+  // 獲取優惠券清單（支援分頁）
+  getCoupons: (page = 0, size = 5) => api.get('/coupon/view', { params: { page, size } }),
+  // 添加優惠券
+  addCoupon: (couponCode) => api.post('/coupon/add', { couponCode }),
+};
+
+
+
 export default api;

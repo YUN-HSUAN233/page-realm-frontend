@@ -16,6 +16,13 @@ import TotpSettings from './pages/Totp/TotpSettings';
 import OAuth2RedirectHandler from './pages/OAuth2RedirectHandler';
 import SupportTicketPage from './pages/SupportTicketPage';
 import SupportMessagePage from './pages/SupportMessagePage';
+import WishlistContent from './pages/wishlistPage';
+import ShoppingCartPage from './pages/shopping-cart';
+import PaymentContent from './pages/payment';
+import PurchaseSuccessContent from './pages/purchase-success';
+import OrderRecordContain from './pages/order-record';
+import PointContent from './pages/point';
+import CuponContent from './pages/cupons';
 
 function App() {
   return (
@@ -91,6 +98,62 @@ function App() {
               element={
                 <ProtectedRoute>
                   <AvatarSettings />
+                </ProtectedRoute>
+              }
+            />
+            <Route 
+              path="/wishlist" 
+              element={
+                <ProtectedRoute>
+                  <WishlistContent />
+                </ProtectedRoute>
+              }
+            />
+            <Route 
+              path="/cart" 
+              element={
+                <ProtectedRoute>
+                  <ShoppingCartPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route 
+              path="/payment" 
+              element={
+                <ProtectedRoute>
+                  <PaymentContent />
+                </ProtectedRoute>
+              }
+            />
+            <Route 
+              path="/purchase-success" 
+              element={
+                <ProtectedRoute>
+                  <PurchaseSuccessContent />
+                </ProtectedRoute>
+              }
+            />
+            <Route 
+              path="/orders" 
+              element={
+                <ProtectedRoute>
+                  <OrderRecordContain />
+                </ProtectedRoute>
+              }
+            />
+            <Route 
+              path="/point" 
+              element={
+                <ProtectedRoute>
+                  <PointContent />
+                </ProtectedRoute>
+              }
+            />
+            <Route 
+              path="/coupon" 
+              element={
+                <ProtectedRoute>
+                  <CuponContent />
                 </ProtectedRoute>
               }
             />

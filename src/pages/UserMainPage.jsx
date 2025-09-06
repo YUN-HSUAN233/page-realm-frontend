@@ -701,20 +701,20 @@ function MrForm({ memberStatus }) {
         <MrTitle />
         <LevelInfoRow 
           label="目前等級" 
-          value={`Lv ${memberStatus?.level || 1}`} 
+          value={memberStatus ? `Lv ${memberStatus.currentLevel}` : 'Lv 1'} 
           isLevel={true} 
         />
         <LevelInfoRow 
           label="等級有效期限" 
-          value={memberStatus?.validPeriod || '未設定'} 
+          value={memberStatus?.periodText || '未設定'} 
         />
         <LevelInfoRow 
           label="結帳回饋點數" 
-          value={`一般點數 ${memberStatus?.normalPoints || 1}% + 獎勵點數 ${memberStatus?.bonusPoints || 0}%，共 ${(memberStatus?.normalPoints || 1) + (memberStatus?.bonusPoints || 0)}%`} 
+          value={memberStatus?.cashbackText || '未設定'} 
         />
         <LevelInfoRow 
           label="下月升等條件" 
-          value={memberStatus?.upgradeCondition || '未設定'} 
+          value={memberStatus?.nextUpgradeText || '未設定'} 
         />
       </div>
       <div aria-hidden="true" className="absolute border border-[#4b2e2a] border-solid inset-0 pointer-events-none rounded-md shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]" />
@@ -899,17 +899,17 @@ const UserMainPageContainer = () => {
 
   const handleOrderInfo = () => {
     console.log('訂單紀錄 clicked');
-    // 實現訂單功能
+    navigate('/orders');
   };
 
   const handleCuponInfo = () => {
     console.log('優惠券 clicked');
-    // 實現優惠券功能
+    navigate('/coupon');
   };
 
   const handlePointInfo = () => {
     console.log('點數管理 clicked');
-    // 實現點數功能
+    navigate('/point');
   };
 
   const handleBookshelf = () => {
@@ -919,7 +919,7 @@ const UserMainPageContainer = () => {
 
   const handleWishlist = () => {
     console.log('願望清單 clicked');
-    // 實現願望清單功能
+    navigate('/wishlist');
   };
 
   const handleFollow = () => {
