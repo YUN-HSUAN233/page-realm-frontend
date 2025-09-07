@@ -860,11 +860,11 @@ export default function PaymentContent() {
         setCouponDiscount(result.deductionAmount);
         setError(null);
       } else {
-        setError(result.message || '優惠券使用失敗');
+        toast.error(result.message || '優惠券使用失敗');
       }
     } catch (err) {
       console.error('應用優惠券失敗:', err);
-      setError('優惠券使用失敗，請重試');
+      toast.error('優惠券使用失敗，請重試');
     } finally {
       setIsProcessing(false);
     }

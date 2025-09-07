@@ -3,6 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { couponAPI } from '../services/api';
 import CouponRecordCard from '../components/CouponRecordCard';
 import QuickMenu from '../components/QuickMenu';
+import toast from 'react-hot-toast';
 import imgPageRealmLogo0111 from "../assets/logos/PageRealm_LOGO_01_1.png";
 
 function Logo() {
@@ -430,7 +431,7 @@ export default function CuponContent() {
       console.log('優惠券添加成功');
     } catch (err) {
       console.error('添加優惠券失敗:', err);
-      setError('添加優惠券失敗，請檢查代碼是否正確');
+      toast.error('已擁有優惠劵，添加優惠券失敗');
     } finally {
       setIsAddingCoupon(false);
     }

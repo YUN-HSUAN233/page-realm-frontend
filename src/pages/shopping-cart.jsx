@@ -329,6 +329,8 @@ function DynamicCartItems({ items, selectedItems, onItemSelection }) {
         return '#4a7b59'; // 綠色
       case '雜誌':
         return '#8b5a3c'; // 棕色
+      case '小說':
+        return '#ab3b3a'; // 紅色
     };
     return colorMap[format] || '#374c77';
   };

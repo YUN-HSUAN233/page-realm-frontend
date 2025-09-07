@@ -497,9 +497,11 @@ function OrderListForm() {
           </div>
         )}
         {orders.length === 0 && !loading ? (
-          <div className="content-stretch flex items-center justify-center overflow-clip py-8 relative w-full">
-            <div className="flex flex-col font-['Inter:Bold',_'Noto_Sans_JP:Bold',_sans-serif] font-bold justify-center leading-[0] not-italic relative shrink-0 text-[#4b2e2a] text-[16px] text-nowrap tracking-[-0.4px]">
-              <p className="leading-[1.1] whitespace-pre">目前沒有訂單記錄</p>
+          <div className="box-border content-stretch flex flex-col items-start justify-start overflow-clip px-[25px] py-[18px] relative">
+            <div className="content-stretch flex items-center justify-center overflow-clip py-8 relative w-full">
+              <div className="flex flex-col font-['Inter:Bold',_'Noto_Sans_JP:Bold',_sans-serif] font-bold justify-center leading-[0] not-italic relative shrink-0 text-[#4b2e2a] text-[16px] text-nowrap tracking-[-0.4px]">
+                <p className="leading-[1.1] whitespace-pre">目前沒有訂單記錄</p>
+              </div>
             </div>
           </div>
         ) : (
